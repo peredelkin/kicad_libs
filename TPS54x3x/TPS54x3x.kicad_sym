@@ -15,7 +15,7 @@
     (symbol "TPS54332_0_1"
       (rectangle (start -12.7 6.35) (end 12.7 -6.35)
         (stroke (width 0.1524) (type default) (color 0 0 0 0))
-        (fill (type none))
+        (fill (type background))
       )
     )
     (symbol "TPS54332_1_1"

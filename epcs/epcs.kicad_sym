@@ -15,7 +15,7 @@
     (symbol "epcs1_0_1"
       (rectangle (start -10.16 6.35) (end 10.16 -6.35)
         (stroke (width 0.1524) (type default) (color 0 0 0 0))
-        (fill (type none))
+        (fill (type background))
       )
     )
     (symbol "epcs1_1_1"
