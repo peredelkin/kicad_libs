@@ -1,12 +1,12 @@
 Vref = 0.8;
 Vggm = 800;
 Vout = 2.5;
-Voutmax = Vout + 0.02;
+Voutmax = Vout + 0.04;
 Ven = 1.25;
-Vstop = 4;
-Vstart = 5;
-Vin = 5;
+Vinmin = 5;
 Vinmax = 15;
+Vstart = Vinmin;
+Vstop = 4;
 
 Ien1 = 1*10^-6;
 Ien2 = 3*10^-6;
@@ -29,7 +29,7 @@ Kind = 0.3;
 
 Lout = 2.5*10^-6;
 
-D = Vout/Vin;
+D = Vout/(Vinmin+((Vinmax-Vinmin)/2));
 
 Voppmax = 10*10^-3;
 
@@ -55,6 +55,7 @@ printf("Iripple = %d\n", Iripple);
 
 Lmin = (Voutmax * (Vinmax - Vout))/(Vinmax * Kind * Ioutmax * Fsw * 0.8);
 printf("Lmin = %d\n", Lmin);
+printf("Lout = %d\n", Lout);
 
 Ilpp = (Vout * (Vinmax - Vout)) / (Vinmax * Lout * Fsw * 0.8);
 printf("Ilpp = %d\n", Ilpp);
@@ -68,20 +69,16 @@ printf("Ilpk = %d\n", Ilpk);
 Coutmin = 1/(2*pi*(Vout/Ioutmax)*Fc0max);
 printf("Coutmin = %d\n", Coutmin);
 
-#дальше какая-то хуйня
-Vopp = Ilpp*((D-0.5)/(4*Fsw*Cout) + ESRout);
+Vopp = Ilpk*((D-0.5)/(4*Fsw*Cout*Nc) + ESRout);
 printf("Vopp = %d\n", Vopp);
 
-ESRmax = (Voppmax/Ilpp) - ((D-0.5)/(4*Fsw*Cout));
+ESRmax = (Voppmax/Ilpp) - ((D-0.5)/(4*Fsw*Cout*Nc));
 printf("ESRmax = %d\n", ESRmax);
 
 Icoutrms = (1/sqrt(12))*((Vout * (Vinmax - Vout))/(Vinmax * Lout * Fsw * Nc));
 printf("Icoutrms = %d\n", Icoutrms);
 
-Gdc = (Vggm * Vref) / Vout;
-printf("Gdc = %d\n", Gdc);
-
-
+#Compensation Components
 
 
 
